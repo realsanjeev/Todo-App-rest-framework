@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 class TodoTask(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     task = models.CharField(max_length=255)
-    description = models.TextField(null=True, blank=True)
+    desc = models.TextField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, blank=True)
     completed = models.BooleanField(default=False, blank=True)
     updated = models.DateTimeField(auto_now=True, blank=True)
