@@ -1,7 +1,11 @@
 from django.urls import path
-from task_api.views import TodoListAPIView, TodoDetailApi
+from rest_framework.authtoken.views import obtain_auth_token
+
+from . import views
 
 urlpatterns = [
-    path("api", TodoListAPIView.as_view(), name="api_view"),
-    path("api/<int:todo_id>/", TodoDetailApi.as_view(), name="ai_task_detail"),
+    path("auth/", obtain_auth_token),
+    path("", views.todo_create_retrive_view),
+    path("<int:pk>/update", views.todo_update_view),
+    path("<int:pk>/delete", views.todo_delete_view)
 ]
