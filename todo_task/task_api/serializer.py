@@ -3,10 +3,17 @@ from task_api.models import TodoTask
 
 class TodoSerializer(serializers.ModelSerializer):
     user = serializers.CharField(read_only=True)
+    view_url = serializers.HyperlinkedIdentityField("todo-detail", lookup_field="pk")
     description = serializers.CharField(source="desc", required=False)
     class Meta:
         model = TodoTask
-        fields = ["user", "task", "description", "completed", "timestamp", "updated"]
+        fields = ["user",
+                "task",
+                "description",
+                "completed",
+                "timestamp",
+                "updated",
+                "view_url"]
 
     def validate_task(self, value):
         request = self.context.get("request")
