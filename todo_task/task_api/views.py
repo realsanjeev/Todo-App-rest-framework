@@ -8,7 +8,7 @@ from task_api.serializer import TodoSerializer
 
 # Create your views here.
 class TodoListAPIView(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
         todos = TodoTask.objects.filter(user=request.user.id)
@@ -28,7 +28,7 @@ class TodoListAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class TodoDetailApi(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self, todo_id, user_id):
         try:
