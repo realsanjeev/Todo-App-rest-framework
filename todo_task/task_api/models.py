@@ -1,10 +1,11 @@
+from django.conf import settings
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
+from django.db.models import Q
+from django.db.models.query import QuerySet
 from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
 
-# Create your models here.
+User = settings.AUTH_USER_MODEL
+
 class TodoTask(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     task = models.CharField(max_length=255)
@@ -15,9 +16,3 @@ class TodoTask(models.Model):
 
     def __str__(self) -> str:
         return self.task
-
-# Signal to create a token when user is created
-@receiver(post_save, sender=User)
-def create_user_token(sender, instance, created, **kwargs):
-    if created:
-        Token.objects.create(user=instance)
