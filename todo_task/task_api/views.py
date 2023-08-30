@@ -14,11 +14,11 @@ class TodoCreateListAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         return super().perform_create(serializer)
     
-class TodoUpdateAPIView(generics.UpdateAPIView):
+class TodoUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = TodoTask.objects.all()
     serializer_class = TodoSerializer
 
-class TodoDeleteAPIView(generics.DestroyAPIView):
+class TodoDeleteAPIView(generics.RetrieveDestroyAPIView):
     queryset = TodoTask.objects.all()
     serializer_class = TodoSerializer
 
