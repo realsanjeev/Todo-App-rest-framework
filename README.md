@@ -1,5 +1,27 @@
-# Todo Task
+# Todo Task API Framework
 
+The **Todo Task API Framework** is designed to provide API responses that can be seamlessly integrated with front-end web applications, such as React.js projects or other web applications, allowing them to request API data and present information to users effectively.
+
+This project leverages the powerful features of the `rest_framework` library to facilitate various core concepts:
+
+## 1. Authentication
+To ensure secure interactions that involve modifying the database, user authentication is required. This framework employs the robust token-based authentication system provided by `rest_framework`.
+
+## 2. CRUD Operations
+Authenticated users have the ability to perform Create, Read, Update, and Delete (CRUD) operations. The system's permissions and authentication processes can be tailored to specific requirements by utilizing custom classes.
+
+## 3. Pagination
+The framework includes a built-in pagination service. This practice is essential when retrieving data from the backend and implementing it on the frontend, as it optimizes data transfer and enhances user experience.
+
+## 4. Search Functionality
+Search functionality is a fundamental feature of the framework. Users can easily search for specific records using queries, making data retrieval efficient and user-friendly.
+
+## 5. API Endpoint Links
+Each operation within the framework is associated with a dedicated API endpoint. This endpoint provides direct access to the respective record, facilitating smooth interaction between the front-end application and the backend API.
+
+By integrating these core concepts, the **Todo Task API Framework** offers a comprehensive solution for building interactive and feature-rich web applications while adhering to industry best practices and ensuring data security.
+
+### Some Info
 1. `from django.db.models.signals import post_save`:
    This import is used to access the `post_save` signal provided by Django's signals framework. Signals are a way for different parts of an application to communicate with each other and respond to specific events. The `post_save` signal is emitted by the Django ORM after an object's `save()` method is called and a new instance is created or an existing instance is updated. In the context of your code, you're using this signal to create a token for a user when a new user instance is created.
 
