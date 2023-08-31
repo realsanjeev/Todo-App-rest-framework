@@ -21,7 +21,7 @@ class TodoSerializer(serializers.ModelSerializer):
         if len(value) < 4:
             raise validators.ValidationError(f"task: `{value}`; length tooo short to take it as task")
         qs = TodoTask.objects.filter(user=user,
-                                     title__iexact=value)
+                                     task__iexact=value)
         if qs.exists():
-            raise (f"Task with title: `{value}` already exists")
+            raise (f"Task with task: `{value}` already exists")
         return value
