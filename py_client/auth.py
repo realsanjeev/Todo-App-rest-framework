@@ -3,7 +3,7 @@ import requests
 from getpass import getpass
 
 SECRECT_FILE = "SECRET"
-AUTH_ENDPOINT = "http://localhost:8000/api/todo/auth/"
+AUTH_ENDPOINT = "http://localhost:8000/api/todos/auth/"
 def authenticate(endpoint=AUTH_ENDPOINT, save=True):
     username = input("Enter username: ")
     password = getpass("Enter password: ")

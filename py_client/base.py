@@ -108,5 +108,5 @@ def delete_todo_task(endpoint: str,
     return json_response
 
 if __name__ == "__main__":
-    endpoint = "http://localhost:8000/api/todo/"
+    endpoint = "http://localhost:8000/api/todos/"
     get_todo_lists(endpoint=endpoint)

@@ -7,5 +7,5 @@ if __name__ == "__main__":
             break
         except:
             print("Please enter valid id value in (integer type)")
-    endpoint = f"http://localhost:8000/api/todo/{id}/delete/"
+    endpoint = f"http://localhost:8000/api/todos/{id}/delete/"
     delete_todo_task(endpoint=endpoint)

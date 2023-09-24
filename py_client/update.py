@@ -8,5 +8,5 @@ if __name__ == "__main__":
         except:
             print("Please enter valid id value in (integer type)")
     new_data = {"task": "Task updated"}
-    endpoint = f"http://localhost:8000/api/todo/{id}/update"
+    endpoint = f"http://localhost:8000/api/todos/{id}/update"
     update_todo_task(endpoint=endpoint, json_payload=new_data)
