@@ -31,3 +31,45 @@ By integrating these core concepts, the **Todo Task API Framework** offers a com
 3. `from rest_framework.authtoken.models import Token`:
    This import is used to access the `Token` model provided by the Django Rest Framework's authentication token system. The authentication token system is used to manage authentication tokens for users. Tokens are often used in APIs to authenticate and authorize requests from clients. In your code, you're using the `Token` model to create new token instances for users. These tokens can then be used for authentication purposes when making API requests.
 
+## Todo App
+
+The Todo App is a task management application that allows users to create, delete, and mark tasks as completed. While the rendering service provides basic functionality, additional features are available through the REST API.
+
+### Features Available:
+
+1. **Add Task**
+   - Users can create new tasks by providing a title and optional description.
+
+2. **Delete Task**
+   - Users can remove tasks from the list.
+
+3. **Mark Task as Completed**
+   - Users can mark tasks as completed to track their progress.
+
+### Additional Features (Available in REST API):
+
+1. **Authentication**
+   - Provides secure access control for users, ensuring that only authorized individuals can interact with the application.
+
+2. **Pagination**
+   - Manages large lists of tasks by splitting them into manageable pages, improving the user experience.
+
+3. **Searching**
+   - Enables users to search for specific tasks based on keywords or criteria, making it easier to find and manage tasks.
+
+> If you only want rest_api service remove `todo_apps` from settings and delete `todo_apps` dir.
+
+## Contributing
+
+Contributions are welcome! If you find any issues or want to add new features, feel free to submit a pull request.
+
+## Contact Me
+
+<table>
+  <tr>
+    <td><img src="https://github.com/realsanjeev/protfolio/blob/main/src/assets/images/instagram.png" alt="Instagram" width="50" height="50"></td>
+    <td><img src="https://github.com/realsanjeev/protfolio/blob/main/src/assets/images/twitter.png" alt="Twitter" width="50" height="50"></td>
+    <td><img src="https://github.com/realsanjeev/protfolio/blob/main/src/assets/images/github.png" alt="GitHub" width="50" height="50"></td>
+    <td><img src="https://github.com/realsanjeev/protfolio/blob/main/src/assets/images/linkedin-logo.png" alt="LinkedIn" width="50" height="50"></td>
+  </tr>
+</table>
