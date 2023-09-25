@@ -46,7 +46,8 @@
                     task="{% if not todo.completed %}
                     mask as done {% else %} mark undone {% endif %}">
                     </form>
-                    {{ todo.task }}
+                    <span style="text-transform: capitalize;">{{ todo.task }}</span>
+                    <pre>{{ todo.desc }}</pre>
                     <a href="{% url 'todos:delete-task' todo.id %}" title="delete task">
                         <i class="far fa-trash-alt"></i>
                     </a>

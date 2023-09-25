@@ -38,4 +38,4 @@ def update(request, *args, **kwargs):
 
     todo.completed = completed
     todo.save()
-    return ("todos:index")
+    return redirect("todos:index")
