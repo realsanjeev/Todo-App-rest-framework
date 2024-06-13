@@ -1,5 +1,33 @@
 # Todo Task API Framework
 
+## Setup Instructions
+
+### Step 1: Clone the GitHub Repository
+
+Clone the repository to your local machine using the following command:
+```bash
+git clone <repository-url>
+```
+
+### Step 2: Initialize the Virtual Environment and Install Dependencies
+
+Navigate to the project directory and create a virtual environment:
+```bash
+cd Todo-App-rest-framework
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### Step 3: Migrate the Database and Run the Django Application
+
+Navigate to the `todo_task` directory, apply migrations, and start the Django development server:
+```bash
+cd todo_task
+python manage.py migrate
+python manage.py runserver
+```
+
 The **Todo Task API Framework** is designed to provide API responses that can be seamlessly integrated with front-end web applications, such as React.js projects or other web applications, allowing them to request API data and present information to users effectively.
 
 This project leverages the powerful features of the `rest_framework` library to facilitate various core concepts:
