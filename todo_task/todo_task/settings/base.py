@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # third package library
     "rest_framework",
     "rest_framework.authtoken",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
@@ -140,3 +142,11 @@ STATIC_ROOT = BASE_DIR / "static"
 # STATICFILES_DIRS = [
 #     BASE_DIR / 'todo_apps' / 'static'
 # ]
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Simple App Of Todo",
+    "DESCRIPTION": "This is simple todo app",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": True,
+    # OTHER SETTINGS
+}

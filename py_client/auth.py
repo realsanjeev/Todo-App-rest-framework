@@ -28,10 +28,10 @@ def authenticate(endpoint=AUTH_ENDPOINT, save=True):
 if __name__ == "__main__":
     token = authenticate()
     headers = {"Authorization": f"Bearer {token}"}
-    sample_endpoint = "http://locahost:8000/spi/todos"
+    sample_endpoint = "http://127.0.0.1:8000/api/todos"
     try:
         request = requests.get(sample_endpoint, headers=headers)
-        print(request.josn())
+        print(request.json())
     except requests.RequestException as err:
         print(f"Some problem occured: {err}")
         exit()
