@@ -1,12 +1,15 @@
-from rest_framework import permissions, generics, authentication
-
+from rest_framework import authentication, generics, permissions
+from task_api.authentication import TokenAutentication
 from task_api.models import TodoTask
 from task_api.serializer import TodoSerializer
-from task_api.authentication import TokenAutentication
+
 
 class TodoCreateListAPIView(generics.ListCreateAPIView):
     queryset = TodoTask.objects.all()
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        permissions.IsAdminUser,
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
     authentication_classes = [authentication.SessionAuthentication, TokenAutentication]
     serializer_class = TodoSerializer
 
@@ -17,16 +20,24 @@ class TodoCreateListAPIView(generics.ListCreateAPIView):
             desc = task
         serializer.save(user=self.request.user, desc=desc)
 
+
 class TodoDetailAPIView(generics.RetrieveAPIView):
     queryset = TodoTask.objects.all()
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        permissions.IsAdminUser,
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
     authentication_classes = [authentication.SessionAuthentication, TokenAutentication]
     lookup_field = "pk"
     serializer_class = TodoSerializer
 
+
 class TodoUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = TodoTask.objects.all()
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        permissions.IsAdminUser,
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
     authentication_classes = [authentication.SessionAuthentication, TokenAutentication]
     serializer_class = TodoSerializer
     lookup_field = "pk"
@@ -38,11 +49,16 @@ class TodoUpdateAPIView(generics.RetrieveUpdateAPIView):
             desc = task
         serializer.save(user=self.request.user, desc=desc)
 
+
 class TodoDeleteAPIView(generics.RetrieveDestroyAPIView):
     queryset = TodoTask.objects.all()
-    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [
+        permissions.IsAdminUser,
+        permissions.IsAuthenticatedOrReadOnly,
+    ]
     authentication_classes = [authentication.SessionAuthentication, TokenAutentication]
     serializer_class = TodoSerializer
+
 
 todo_create_retrive_view = TodoCreateListAPIView.as_view()
 todo_detail_retrive_view = TodoDetailAPIView.as_view()
@@ -64,5 +80,6 @@ class SearchTodoAPIView(generics.ListAPIView):
                 user = self.request.user
             results = qs.search(q, user=user)
         return results
+
 
 todo_search_view = SearchTodoAPIView.as_view()

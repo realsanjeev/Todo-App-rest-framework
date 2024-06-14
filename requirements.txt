@@ -2,3 +2,6 @@ django>=5.0
 psycopg>=3.1.8
 djangorestframework==3.15.1
 python-dotenv
+
+# for running hooks before commit(for dev only)
+pre-commit

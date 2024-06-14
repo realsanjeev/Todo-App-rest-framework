@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('task_api', '0003_rename_description_todotask_desc'),
+        ("task_api", "0003_rename_description_todotask_desc"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='todotask',
-            name='public',
+            model_name="todotask",
+            name="public",
             field=models.BooleanField(default=False),
         ),
     ]

@@ -1,7 +1,7 @@
 import os
-import json
+
 import requests
-from auth import authenticate, SECRECT_FILE
+from auth import SECRECT_FILE, authenticate
 
 # Check for the existence of the secret file
 if os.path.exists(SECRECT_FILE):
@@ -14,16 +14,16 @@ else:
 # Prepare the authorization header
 header = {"Authorization": f"Bearer {token}"}
 
-def get_todo_lists(endpoint: str,
-                   json_payload: dict = None,
-                   data: dict = None,
-                   params: dict = None,
-                   headers: dict = header):
+
+def get_todo_lists(
+    endpoint: str,
+    json_payload: dict = None,
+    data: dict = None,
+    params: dict = None,
+    headers: dict = header,
+):
     print("*" * 4, f" {endpoint} ", "*" * 4)
-    response = requests.get(endpoint,
-                            params=params,
-                            data=data,
-                            headers=headers)
+    response = requests.get(endpoint, params=params, data=data, headers=headers)
     try:
         json_response = response.json()
         print(json_response)
@@ -36,17 +36,18 @@ def get_todo_lists(endpoint: str,
         raise Exception(f"Request Error Exception: {err}")
     return json_response
 
-def post_todo_task(endpoint: str,
-                   json_payload: dict = None,
-                   data: dict = None,
-                   params: dict = None,
-                   headers: dict = header):
+
+def post_todo_task(
+    endpoint: str,
+    json_payload: dict = None,
+    data: dict = None,
+    params: dict = None,
+    headers: dict = header,
+):
     print("*" * 4, f" {endpoint} ", "*" * 4)
-    response = requests.post(endpoint,
-                            json=json_payload,
-                            data=data,
-                            params=params,
-                            headers=headers)
+    response = requests.post(
+        endpoint, json=json_payload, data=data, params=params, headers=headers
+    )
     try:
         json_response = response.json()
         print(json_response)
@@ -59,17 +60,18 @@ def post_todo_task(endpoint: str,
         raise Exception(f"Request Error Exception: {err}")
     return json_response
 
-def update_todo_task(endpoint: str,
-                   json_payload: dict = None,
-                   data: dict = None,
-                   params: dict = None,
-                   headers: dict = header):
+
+def update_todo_task(
+    endpoint: str,
+    json_payload: dict = None,
+    data: dict = None,
+    params: dict = None,
+    headers: dict = header,
+):
     print("*" * 4, f" {endpoint} ", "*" * 4)
-    response = requests.put(endpoint,
-                            json=json_payload,
-                            data=data,
-                            params=params,
-                            headers=headers)
+    response = requests.put(
+        endpoint, json=json_payload, data=data, params=params, headers=headers
+    )
     try:
         json_response = response.json()
         print("Updated data: ", json_response)
@@ -84,17 +86,18 @@ def update_todo_task(endpoint: str,
         raise Exception(f"Request Error Exception: {err}")
     # return json_response
 
-def delete_todo_task(endpoint: str,
-                   json_payload: dict = None,
-                   data: dict = None,
-                   params: dict = None,
-                   headers: dict = header):
+
+def delete_todo_task(
+    endpoint: str,
+    json_payload: dict = None,
+    data: dict = None,
+    params: dict = None,
+    headers: dict = header,
+):
     print("*" * 4, f" {endpoint} ", "*" * 4)
-    response = requests.delete(endpoint,
-                            json=json_payload,
-                            data=data,
-                            params=params,
-                            headers=headers)
+    response = requests.delete(
+        endpoint, json=json_payload, data=data, params=params, headers=headers
+    )
     try:
         json_response = response.json()
         print("Deleted data: ", json_response)
@@ -106,6 +109,7 @@ def delete_todo_task(endpoint: str,
     except requests.RequestException as err:
         raise Exception(f"Request Error Exception: {err}")
     return json_response
+
 
 if __name__ == "__main__":
     endpoint = "http://localhost:8000/api/todos/"

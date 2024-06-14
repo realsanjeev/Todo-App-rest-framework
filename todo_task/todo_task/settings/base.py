@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -29,10 +30,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 
-if 'CODESPACE_NAME' in os.environ:
+if "CODESPACE_NAME" in os.environ:
     codespace_name = os.getenv("CODESPACE_NAME")
     codespace_domain = os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")
-    CSRF_TRUSTED_ORIGINS = [f'https://{codespace_name}-8000.{codespace_domain}']
+    CSRF_TRUSTED_ORIGINS = [f"https://{codespace_name}-8000.{codespace_domain}"]
 
 
 # Application definition
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     "task_api",
     "todos_app",
     # third package library
-    'rest_framework',
+    "rest_framework",
     "rest_framework.authtoken",
 ]
 
@@ -64,12 +65,12 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
     ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 3
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 3,
 }
 
 ROOT_URLCONF = "todo_task.urls"
@@ -98,7 +99,7 @@ WSGI_APPLICATION = "todo_task.wsgi.application"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
@@ -135,7 +136,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Static file
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / "static"
 # STATICFILES_DIRS = [
 #     BASE_DIR / 'todo_apps' / 'static'
 # ]

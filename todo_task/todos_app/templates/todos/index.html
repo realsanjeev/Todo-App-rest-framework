@@ -39,8 +39,8 @@
                 <div class="list-group-item {% if todo.completed %} todo-complete {% endif %}">
                     <form style="display: inline;" method="post" action="{% url 'todos:update-task' todo.id %}">
                     {% csrf_token %}
-                    <input type="checkbox" name="completed" 
-                    onchange="this.form.submit()" 
+                    <input type="checkbox" name="completed"
+                    onchange="this.form.submit()"
                     {% if todo.completed %} checked {% endif %}
                     class="todo-status-checkbox"
                     task="{% if not todo.completed %}
