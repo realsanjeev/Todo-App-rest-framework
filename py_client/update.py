@@ -7,6 +7,9 @@ if __name__ == "__main__":
             break
         except ValueError:
             print("Please enter valid id value in (integer type)")
-    new_data = {"task": "Task updated"}
-    endpoint = f"http://localhost:8000/api/todos/{id}/update"
+
+    task = input("Enter the Task title: ")
+    description = input("Enter the Task Discription: ")
+    new_data = {"task": task, "description": description}
+    endpoint = f"http://localhost:8000/api/todos/{id}/update/"
     update_todo_task(endpoint=endpoint, json_payload=new_data)

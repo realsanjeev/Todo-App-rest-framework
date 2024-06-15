@@ -9,6 +9,6 @@ urlpatterns = [
     # crud operation
     path("", views.todo_create_retrive_view, name="create"),
     path("<int:pk>/", views.todo_detail_retrive_view, name="todo-detail"),
-    path("<int:pk>/update", views.todo_update_view, name="update"),
-    path("<int:pk>/delete", views.todo_delete_view, name="delete"),
+    path("<int:pk>/update/", views.todo_update_view, name="update"),
+    path("<int:pk>/delete/", views.todo_delete_view, name="delete"),
 ]

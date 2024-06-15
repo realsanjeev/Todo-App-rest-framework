@@ -28,5 +28,7 @@ class TodoSerializer(serializers.ModelSerializer):
             )
         qs = TodoTask.objects.filter(user=user, task__iexact=value)
         if qs.exists():
-            raise (f"Task with task: `{value}` already exists")
+            raise serializers.ValidationError(
+                f"Task with task: `{value}` already exists"
+            )
         return value
