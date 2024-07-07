@@ -4,7 +4,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
     # template rendering path
-    path("", include("todos_app.urls")),
+    path("", include("myapp.urls")),
     path("admin/", admin.site.urls),
     # path used for django rest and its testing
     path("api/todos/", include("task_api.urls")),
