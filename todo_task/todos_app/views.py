@@ -1,9 +1,14 @@
 from typing import Any
 
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db.models.query import QuerySet
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import generic
 from task_api.models import TodoTask
+
+from .forms import LoginForm, SignUpForm
 
 
 class GenericListView(generic.ListView):
@@ -12,6 +17,43 @@ class GenericListView(generic.ListView):
 
     def get_queryset(self) -> QuerySet[Any]:
         return TodoTask.objects.order_by("updated")
+
+
+def signup_view(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("home")
+    else:
+        form = SignUpForm()
+    return render(request, "account/signup.html", {"form": form})
+
+
+def login_view(request):
+    if request.method == "POST":
+        form = LoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("home")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    else:
+        form = LoginForm()
+    return render(request, "account/login.html", {"form": form})
+
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect("login")
 
 
 def add(request, *args, **kwargs):
