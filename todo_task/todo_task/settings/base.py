@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # django app
     "task_api",
-    "todos_app",
+    "myapp",
     # third package library
     "rest_framework",
     "rest_framework.authtoken",
