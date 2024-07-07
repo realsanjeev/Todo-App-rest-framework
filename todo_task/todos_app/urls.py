@@ -11,6 +11,9 @@ urlpatterns = [
     path("<int:todo_id>/delete", views.delete, name="delete-task"),
     path("<int:todo_id>/update", views.update, name="update-task"),
     path("add/", views.add, name="add-task"),
+    path("signup/", views.signup_view, name="signup"),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout),
 ]
 
 if settings.DEBUG:
