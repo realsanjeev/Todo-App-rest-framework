@@ -1,7 +1,3 @@
-Here's a rewritten version of your README for the Todo Task API Framework:
-
----
-
 # Todo Task API Framework
 
 ## Setup Instructions
